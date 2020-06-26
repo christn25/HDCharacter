@@ -4,8 +4,13 @@
 </template>
 
 <script>
+import AbilityDetails from './AbilityDetails.vue';
+
 export default {
-  name: 'traits-and-abilities-list',
+  name: 'abilities-list',
+  components: {
+    'ability-details': AbilityDetails
+  },
   props: [''],
   methods: {
   }

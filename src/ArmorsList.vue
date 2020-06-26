@@ -4,8 +4,13 @@
 </template>
 
 <script>
+import ArmorDetails from './ArmorDetails.vue';
+
 export default {
   name: 'armors-list',
+  components: {
+    'armor-details': ArmorDetails
+  },
   props: [''],
   methods: {
   }

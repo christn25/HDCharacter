@@ -4,8 +4,13 @@
 </template>
 
 <script>
+import WeaponDetails from './WeaponDetails.vue';
+
 export default {
   name: 'weapons-list',
+  components: {
+    'weapon-details': WeaponDetails
+  },
   props: [''],
   methods: {
   }

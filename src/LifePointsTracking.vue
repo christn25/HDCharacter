@@ -5,7 +5,7 @@
 
 <script>
 export default {
-  name: 'life-points-traking',
+  name: 'life-points',
   props: [''],
   methods: {
   }

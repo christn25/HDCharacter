@@ -5,7 +5,7 @@
 
 <script>
 export default {
-  name: 'armor-class-section',
+  name: 'armor-class',
   props: [''],
   methods: {
   }
