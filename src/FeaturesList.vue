@@ -1,25 +1,44 @@
 <template>
   <div>
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Valeur</th>
+          <th>Modificateur</th>
+          <th>Sauvegarde</th>
+          <th>Maîtrise</th>
+        </tr>
+      </thead>
+      <tbody>
+        <template v-for="stat in stats">
+          <feature-details v-bind:feature="stat"></feature-details>
+        </template>
+      </tbody>
+    </table>
   </div>
 </template>
 
 <script>
-import FeatureDetails from './FeatureDetails.vue';
+import FeatureDetails from "./FeatureDetails.vue";
 
 export default {
-  name: 'features-list',
+  name: "features-list",
   components: {
-    'feature-details': FeatureDetails
+    "feature-details": FeatureDetails
   },
-  props: ['', ''],
+  props: ["stats", "ddjs"],
   methods: {
-  },
-  data () {
-      return {
-      }
+    updateData: function(stat) {
+      stat.modifier = stat.value;
+    }
   }
 };
 </script>
 
 <style lang="scss" scoped>
+table,
+tr {
+  border: 1px solid black;
+}
 </style>

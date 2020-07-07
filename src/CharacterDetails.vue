@@ -41,7 +41,6 @@
         <option value="sorcier">Sorcier</option>
       </select>
     </div>
-    <button v-on:click="printCharacter(details)">character</button>
   </div>
 </template>
 
@@ -50,9 +49,6 @@ export default {
   name: "character-details",
   props: ["details"],
   methods: {
-    printCharacter: function(infos) {
-      console.log(infos);
-    }
   }
 };
 </script>

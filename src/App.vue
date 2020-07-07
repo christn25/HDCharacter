@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <char-details v-bind:details="character"></char-details>
-    <features-list></features-list>
+    <char-details v-bind:details="character.details"></char-details>
+    <features-list v-bind:stats="character.stats" v-bind:ddjs="character.ddjs"></features-list>
     <skills-list></skills-list>
     <fight-modifiers></fight-modifiers>
     <armor-class></armor-class>
@@ -11,83 +11,97 @@
     <life-points></life-points>
     <abilities-list></abilities-list>
     <magic-stuffs></magic-stuffs>
+    <button v-on:click="printCharacter(character)">character</button>
   </div>
 </template>
 
 <script>
-import CharacterDetails from './CharacterDetails.vue';
-import FeaturesList from './FeaturesList.vue';
-import SkillsList from './SkillsList.vue';
-import FightModifiers from './FightModifiers.vue';
-import ArmorClassSection from './ArmorClassSection.vue';
-import StatusSection from './StatusSection.vue';
-import ArmorsAndWeapons from './ArmorsAndWeapons.vue';
-import SpellsList from './SpellsList.vue';
-import LifePointsTracking from './LifePointsTracking.vue';
-import TraitsAndAbilitiesList from './TraitsAndAbilitiesList.vue';
-import MagicStuffsList from './MagicStuffsList';
+import CharacterDetails from "./CharacterDetails.vue";
+import FeaturesList from "./FeaturesList.vue";
+import SkillsList from "./SkillsList.vue";
+import FightModifiers from "./FightModifiers.vue";
+import ArmorClassSection from "./ArmorClassSection.vue";
+import StatusSection from "./StatusSection.vue";
+import ArmorsAndWeapons from "./ArmorsAndWeapons.vue";
+import SpellsList from "./SpellsList.vue";
+import LifePointsTracking from "./LifePointsTracking.vue";
+import TraitsAndAbilitiesList from "./TraitsAndAbilitiesList.vue";
+import MagicStuffsList from "./MagicStuffsList";
 
 export default {
-  name: 'app',
+  name: "app",
   components: {
-    'char-details': CharacterDetails,
-    'features-list': FeaturesList,
-    'skills-list': SkillsList,
-    'fight-modifiers': FightModifiers,
-    'armor-class': ArmorClassSection,
-    'status-section': StatusSection,
-    'armors-and-weapons': ArmorsAndWeapons,
-    'spells-list': SpellsList,
-    'life-points': LifePointsTracking,
-    'abilities-list': TraitsAndAbilitiesList,
-    'magic-stuffs': MagicStuffsList
+    "char-details": CharacterDetails,
+    "features-list": FeaturesList,
+    "skills-list": SkillsList,
+    "fight-modifiers": FightModifiers,
+    "armor-class": ArmorClassSection,
+    "status-section": StatusSection,
+    "armors-and-weapons": ArmorsAndWeapons,
+    "spells-list": SpellsList,
+    "life-points": LifePointsTracking,
+    "abilities-list": TraitsAndAbilitiesList,
+    "magic-stuffs": MagicStuffsList
   },
-  data () {
+  methods: {
+    printCharacter: function(infos) {
+      console.log(infos);
+    }
+  },
+  data() {
     return {
       character: {
-        name: '',
-        level: 0,
-        breed: '',
-        class: '',
+        details: {
+          name: "",
+          level: 0,
+          breed: "",
+          class: ""
+        },
         stats: {
           for: {
+            name: "Force",
             value: 0,
             mastery: false,
             save: 0,
             modifier: 0
           },
           dex: {
+            name: "Dextérité",
             value: 0,
             mastery: false,
             save: 0,
             modifier: 0
           },
           con: {
+            name: "Constitution",
             value: 0,
             mastery: false,
             save: 0,
             modifier: 0
           },
           int: {
+            name: "Intelligence",
             value: 0,
             mastery: false,
             save: 0,
             modifier: 0
           },
           sag: {
+            name: "Sagesse",
             value: 0,
             mastery: false,
             save: 0,
             modifier: 0
           },
           cha: {
+            name: "Charisme",
             value: 0,
             mastery: false,
             save: 0,
             modifier: 0
-          },
-          ddjs: 0
+          }
         },
+        ddjs: 0,
         skills: {
           acrobaties: 0,
           arcanes: 0,
@@ -134,9 +148,9 @@ export default {
         traitsAndAbilities: [],
         magicStuffs: []
       }
-    }
+    };
   }
-}
+};
 </script>
 
 <style lang="scss">
