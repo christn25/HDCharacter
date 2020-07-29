@@ -5,7 +5,7 @@
       <input
         type="number"
         v-model="feature.value"
-        v-on:keyup="updateData(details, feature, pvTracking, fightModifiers, ddjs)"
+        v-on:keyup="updateData(details, stats, feature, pvTracking, fightModifiers, ddjs)"
         v-on:click="initValues(stats, feature, pvTracking)"
         min="0"
       />
@@ -27,32 +27,34 @@ export default {
   name: "feature-details",
   props: ["details", "stats", "feature", "pvTracking", "fightModifiers", "ddjs"],
   methods: {
-    updateData: function(details, stat, pvTracking, fightModifiers, ddjs) {
-      if (stat.value != "") {
-        stat.totalValue = parseInt(stat.value) + parseInt(stat.breedBonus);
-        stat.modifier = Math.floor((stat.totalValue - 10) / 2);
-        if (stat.mastery) {
-          console.log("Je maîtrise ! " + fightModifiers.masteryBonus + " " +stat.modifier);
-          stat.save = parseInt(fightModifiers.masteryBonus) + parseInt(stat.modifier);
+    updateData: function(details,stats, feature, pvTracking, fightModifiers, ddjs) {
+      if (feature.value != "") {
+        feature.totalValue = parseInt(feature.value) + parseInt(feature.breedBonus);
+        feature.modifier = Math.floor((feature.totalValue - 10) / 2);
+        if (feature.mastery) {
+          feature.save = parseInt(fightModifiers.masteryBonus) + parseInt(feature.modifier);
         } else {
-          stat.save = stat.modifier;
+          feature.save = feature.modifier;
         }
       } else {
-        stat.modifier = 0;
-        stat.save = 0;
+        feature.modifier = 0;
+        feature.save = 0;
       }
-      if (stat.name == "Constitution") {
-        pvTracking.maxValue = parseInt(pvTracking.pvDice.value) + parseInt(stat.modifier) + ((Math.round((parseInt(pvTracking.pvDice.value) + 1) / 2)) * ((parseInt(details.level)) - 1));
+      if (feature.name == "Constitution") {
+        if(parseInt(details.level) == 1){
+          pvTracking.maxValue = pvTracking.pvDice.value + stats.con.modifier;
+        } else {
+          pvTracking.maxValue = parseInt(pvTracking.pvDice.value) + ((parseInt(details.level) - 1) * (Math.round((parseInt(pvTracking.pvDice.value) + 1) / 2) + parseInt(stats.con.modifier)));
+        }
       }
-      if(stat.name == ddjs.affectedStat) {
-        ddjs.value = tools.updateDDJSValue(stat.modifier, fightModifiers.masteryBonus);
+      if(feature.name == ddjs.affectedStat) {
+        ddjs.value = tools.updateDDJSValue(feature.modifier, fightModifiers.masteryBonus);
       }
     },
     initValues: function(stats, feature, pvTracking) {
       feature.value = null;
       feature.modifier = 0;
       feature.save = 0;
-      pvTracking.maxValue = parseInt(stats.con.modifier) + parseInt(pvTracking.pvDice.value);
     }
   }
 };
