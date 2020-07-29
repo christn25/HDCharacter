@@ -5,17 +5,21 @@
         <tr>
           <th></th>
           <th>Valeur</th>
+          <th>Bonus de race</th>
           <th>Modificateur</th>
+          <th>Valeur Totale</th>
           <th>Sauvegarde</th>
-          <th>Maîtrise</th>
+          <th>Maîtrises de sauvegarde</th>
         </tr>
       </thead>
       <tbody>
         <template v-for="stat in stats">
-          <feature-details v-bind:feature="stat"></feature-details>
+          <feature-details v-bind:details="details" v-bind:feature="stat" v-bind:pvTracking="pvTracking" v-bind:masteryBonus="fightModifiers.masteryBonus"></feature-details>
         </template>
       </tbody>
     </table>
+    <div v-if="ddjs">Difficulté des JS : {{ddjs}}</div>
+    <div>Points de vie : {{pvTracking.maxValue}}</div>
   </div>
 </template>
 
@@ -27,12 +31,8 @@ export default {
   components: {
     "feature-details": FeatureDetails
   },
-  props: ["stats", "ddjs"],
-  methods: {
-    updateData: function(stat) {
-      stat.modifier = stat.value;
-    }
-  }
+  props: ["details", "stats", "ddjs", "pvTracking", "fightModifiers"],
+  methods: {}
 };
 </script>
 

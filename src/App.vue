@@ -1,7 +1,19 @@
 <template>
   <div id="app">
-    <char-details v-bind:details="character.details"></char-details>
-    <features-list v-bind:stats="character.stats" v-bind:ddjs="character.ddjs"></features-list>
+    <char-details
+      v-bind:details="character.details"
+      v-bind:stats="character.stats"
+      v-bind:fightModifiers="character.fightModifiers"
+      v-bind:pvTracking="character.pvTracking"
+      v-bind:ddjs="character.ddjs"
+    ></char-details>
+    <features-list
+      v-bind:details="character.details"
+      v-bind:stats="character.stats"
+      v-bind:ddjs="character.ddjs"
+      v-bind:fightModifiers="character.fightModifiers"
+      v-bind:pvTracking="character.pvTracking"
+    ></features-list>
     <skills-list></skills-list>
     <fight-modifiers></fight-modifiers>
     <armor-class></armor-class>
@@ -53,7 +65,7 @@ export default {
       character: {
         details: {
           name: "",
-          level: 0,
+          level: null,
           breed: "",
           class: ""
         },
@@ -63,45 +75,57 @@ export default {
             value: 0,
             mastery: false,
             save: 0,
-            modifier: 0
+            modifier: 0,
+            breedBonus: 0,
+            totalValue: 0
           },
           dex: {
             name: "Dextérité",
             value: 0,
             mastery: false,
             save: 0,
-            modifier: 0
+            modifier: 0,
+            breedBonus: 0,
+            totalValue: 0
           },
           con: {
             name: "Constitution",
             value: 0,
             mastery: false,
             save: 0,
-            modifier: 0
+            modifier: 0,
+            breedBonus: 0,
+            totalValue: 0
           },
           int: {
             name: "Intelligence",
             value: 0,
             mastery: false,
             save: 0,
-            modifier: 0
+            modifier: 0,
+            breedBonus: 0,
+            totalValue: 0
           },
           sag: {
             name: "Sagesse",
             value: 0,
             mastery: false,
             save: 0,
-            modifier: 0
+            modifier: 0,
+            breedBonus: 0,
+            totalValue: 0
           },
           cha: {
             name: "Charisme",
             value: 0,
             mastery: false,
             save: 0,
-            modifier: 0
+            modifier: 0,
+            breedBonus: 0,
+            totalValue: 0
           }
         },
-        ddjs: 0,
+        ddjs: null,
         skills: {
           acrobaties: 0,
           arcanes: 0,
@@ -123,7 +147,7 @@ export default {
           survie: 0
         },
         fightModifiers: {
-          masterBonus: 0,
+          masteryBonus: 0,
           perception: 0,
           initiative: 0,
           vitesse: 0
@@ -142,7 +166,12 @@ export default {
         armors: [],
         spells: [],
         pvTracking: {
+          pvDice: {
+            value: null,
+            nbDice: null
+          },
           currentValue: 0,
+          provisionalPV: 0,
           maxValue: 0
         },
         traitsAndAbilities: [],
@@ -154,4 +183,9 @@ export default {
 </script>
 
 <style lang="scss">
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 </style>
