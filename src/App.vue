@@ -65,7 +65,7 @@ export default {
       character: {
         details: {
           name: "",
-          level: null,
+          level: 1,
           breed: "",
           class: ""
         },
@@ -125,7 +125,10 @@ export default {
             totalValue: 0
           }
         },
-        ddjs: null,
+        ddjs: {
+          value: null,
+          affectedStat: ""
+        },
         skills: {
           acrobaties: 0,
           arcanes: 0,
@@ -147,7 +150,7 @@ export default {
           survie: 0
         },
         fightModifiers: {
-          masteryBonus: 0,
+          masteryBonus: 2,
           perception: 0,
           initiative: 0,
           vitesse: 0

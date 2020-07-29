@@ -14,11 +14,18 @@
       </thead>
       <tbody>
         <template v-for="stat in stats">
-          <feature-details v-bind:details="details" v-bind:feature="stat" v-bind:pvTracking="pvTracking" v-bind:masteryBonus="fightModifiers.masteryBonus"></feature-details>
+          <feature-details
+            v-bind:details="details"
+            v-bind:stats= "stats"
+            v-bind:feature="stat"
+            v-bind:pvTracking="pvTracking"
+            v-bind:fightModifiers="fightModifiers"
+            v-bind:ddjs="ddjs"
+          ></feature-details>
         </template>
       </tbody>
     </table>
-    <div v-if="ddjs">Difficulté des JS : {{ddjs}}</div>
+    <div v-if="ddjs.value != null">Difficulté des JS : {{ddjs.value}}</div>
     <div>Points de vie : {{pvTracking.maxValue}}</div>
   </div>
 </template>
@@ -29,10 +36,10 @@ import FeatureDetails from "./FeatureDetails.vue";
 export default {
   name: "features-list",
   components: {
-    "feature-details": FeatureDetails
+    "feature-details": FeatureDetails,
   },
   props: ["details", "stats", "ddjs", "pvTracking", "fightModifiers"],
-  methods: {}
+  methods: {},
 };
 </script>
 

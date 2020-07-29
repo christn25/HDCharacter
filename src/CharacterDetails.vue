@@ -9,7 +9,7 @@
         v-model="details.level"
         placeholder="Niveau"
         min="1"
-        v-on:keyup="updateMasteryValue(details, pvTracking, fightModifiers)"
+        v-on:keyup="updateMasteryValue(details, stats, pvTracking, fightModifiers)"
         v-on:click="initLevel(details)"
       />
     </div>
@@ -51,7 +51,7 @@
         <option value="magicien">Magicien</option>
         <option value="moine">Moine</option>
         <option value="paladin">Paladin</option>
-        <option value="rôdeur">Rôdeur</option>
+        <option value="rodeur">Rôdeur</option>
         <option value="roublard">Roublard</option>
         <option value="sorcier">Sorcier</option>
       </select>
@@ -125,82 +125,104 @@ export default {
       for (var stat in stats) {
         stats[stat].mastery = false;
         pvTracking.pvDice.value = null;
+        ddjs.value = null;
+        ddjs.affectedValue = "";
       }
       switch (charClass) {
         case "barbare":
           stats.for.mastery = true;
           stats.con.mastery = true;
           pvTracking.pvDice.value = 12;
+          pvTracking.maxValue = 12 + parseInt(stats.con.modifier);
           break;
         case "barde":
           stats.dex.mastery = true;
           stats.cha.mastery = true;
           pvTracking.pvDice.value = 8;
-          ddjs = tools.updateDDJSValue(stats.cha.modifier, fightModifiers.masteryBonus);
+          pvTracking.maxValue = 8 + parseInt(stats.con.modifier);
+          ddjs.value = tools.updateDDJSValue(stats.cha.modifier, fightModifiers.masteryBonus);
+          ddjs.affectedStat = "Charisme";
           break;
         case "clerc":
           stats.sag.mastery = true;
           stats.cha.mastery = true;
-          pvTracking.pvDice.value = 8;
-          ddjs = tools.updateDDJSValue(stats.sag.modifier, fightModifiers.masteryBonus);
+          pvTracking.pvDice.value = 8;          
+          pvTracking.maxValue = 8 + parseInt(stats.con.modifier);
+          ddjs.value = tools.updateDDJSValue(stats.sag.modifier, fightModifiers.masteryBonus);
+          ddjs.affectedStat = "Sagesse";
           break;
         case "druide":
           stats.int.mastery = true;
           stats.sag.mastery = true;
-          pvTracking.pvDice.value = 8;
-          ddjs = tools.updateDDJSValue(stats.sag.modifier, fightModifiers.masteryBonus);
+          pvTracking.pvDice.value = 8;          
+          pvTracking.maxValue = 8 + parseInt(stats.con.modifier);
+          ddjs.value = tools.updateDDJSValue(stats.sag.modifier, fightModifiers.masteryBonus);
+          ddjs.affectedStat = "Sagesse";
           break;
         case "ensorceleur":
           stats.con.mastery = true;
           stats.cha.mastery = true;
-          pvTracking.pvDice.value = 6;
-          ddjs = tools.updateDDJSValue(stats.cha.modifier, fightModifiers.masteryBonus);
+          pvTracking.pvDice.value = 6;          
+          pvTracking.maxValue = 6 + parseInt(stats.con.modifier);
+          ddjs.value = tools.updateDDJSValue(stats.cha.modifier, fightModifiers.masteryBonus);
+          ddjs.affectedStat = "Charisme";
           break;
         case "guerrier":
           stats.for.mastery = true;
           stats.con.mastery = true;
           pvTracking.pvDice.value = 10;
+          pvTracking.maxValue = 10 + parseInt(stats.con.modifier);
           break;
         case "magicien":
           stats.int.mastery = true;
           stats.sag.mastery = true;
-          pvTracking.pvDice.value = 6;
-          ddjs = tools.updateDDJSValue(stats.int.modifier, fightModifiers.masteryBonus);
+          pvTracking.pvDice.value = 6;          
+          pvTracking.maxValue = 6 + parseInt(stats.con.modifier);
+          ddjs.value = tools.updateDDJSValue(stats.int.modifier, fightModifiers.masteryBonus);
+          ddjs.affectedStat = "Intelligence";
           break;
         case "moine":
           stats.for.mastery = true;
           stats.dex.mastery = true;
-          pvTracking.pvDice.value = 8;
+          pvTracking.pvDice.value = 8;          
+          pvTracking.maxValue = 8 + parseInt(stats.con.modifier);
           break;
         case "paladin":
           stats.sag.mastery = true;
           stats.cha.mastery = true;
-          pvTracking.pvDice.value = 10;
-          ddjs = tools.updateDDJSValue(stats.cha.modifier, fightModifiers.masteryBonus);
+          pvTracking.pvDice.value = 10;          
+          pvTracking.maxValue = 10 + parseInt(stats.con.modifier);
+          ddjs.value = tools.updateDDJSValue(stats.cha.modifier, fightModifiers.masteryBonus);
+          ddjs.affectedStat = "Charisme";
           break;
-        case "rôdeur":
+        case "rodeur":
           stats.for.mastery = true;
           stats.dex.mastery = true;
-          pvTracking.pvDice.value = 10;
-          ddjs = tools.updateDDJSValue(stats.sag.modifier, fightModifiers.masteryBonus);
+          pvTracking.pvDice.value = 10;          
+          pvTracking.maxValue = 10 + parseInt(stats.con.modifier);
+          ddjs.value = tools.updateDDJSValue(stats.sag.modifier, fightModifiers.masteryBonus);
+          ddjs.affectedStat = "Sagesse";
           break;
         case "roublard":
           stats.dex.mastery = true;
           stats.int.mastery = true;
-          pvTracking.pvDice.value = 8;
+          pvTracking.pvDice.value = 8;          
+          pvTracking.maxValue = 8 + parseInt(stats.con.modifier);
           break;
         case "sorcier":
           stats.sag.mastery = true;
           stats.cha.mastery = true;
-          pvTracking.pvDice.value = 8;
-          ddjs = tools.updateDDJSValue(stats.cha.modifier, fightModifiers.masteryBonus);
+          pvTracking.pvDice.value = 8;          
+          pvTracking.maxValue = 8 + parseInt(stats.con.modifier);
+          ddjs.value = tools.updateDDJSValue(stats.cha.modifier, fightModifiers.masteryBonus);
+          ddjs.affectedStat = "Charisme";
           break;
       }
     },
-    updateMasteryValue: function(details, pvTracking, fightModifiers) {
+    updateMasteryValue: function(details, stats, pvTracking, fightModifiers) {
       pvTracking.pvDice.nbDice = details.level;
       if (details.level > 1) {
-        pvTracking.maxValue = parseInt(pvTracking.maxValue) + ((parseInt(details.level) - 1) * Math.round((parseInt(pvTracking.pvDice.value) + 1) / 2));
+        pvTracking.maxValue = parseInt(pvTracking.pvDice.value) + ((parseInt(details.level) - 1) * (Math.round((parseInt(pvTracking.pvDice.value) + 1) / 2) + parseInt(stats.con.modifier)));
       }
       if (details.level <= 4) {
         fightModifiers.masteryBonus = 2;

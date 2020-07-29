@@ -1,6 +1,6 @@
 export default {
-    updateDDJSValue: function (value, masteryModifier) {
-        console.log("update ddjs: " + value + ", " + masteryModifier);
-        return 8 + value + masteryModifier;
+    updateDDJSValue: function (statModifier, masteryBonus) {
+        console.log("update ddjs: " + statModifier + ", " + masteryBonus);
+        return 8 + statModifier + masteryBonus;
     }
 }
