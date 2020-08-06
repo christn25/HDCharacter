@@ -1,64 +1,29 @@
 <template>
   <div id="app">
-    <char-details
-      v-bind:details="character.details"
-      v-bind:stats="character.stats"
-      v-bind:fightModifiers="character.fightModifiers"
-      v-bind:pvTracking="character.pvTracking"
-      v-bind:ddjs="character.ddjs"
-    ></char-details>
-    <features-list
-      v-bind:details="character.details"
-      v-bind:stats="character.stats"
-      v-bind:ddjs="character.ddjs"
-      v-bind:fightModifiers="character.fightModifiers"
-      v-bind:pvTracking="character.pvTracking"
-    ></features-list>
-    <skills-list></skills-list>
-    <fight-modifiers></fight-modifiers>
-    <armor-class></armor-class>
-    <status-section></status-section>
-    <armors-and-weapons></armors-and-weapons>
-    <spells-list></spells-list>
-    <life-points></life-points>
-    <abilities-list></abilities-list>
-    <magic-stuffs></magic-stuffs>
+    <router-view v-bind:character="character"></router-view>
+    <div>
+      <button><router-link to="/character">Personnage</router-link></button>
+      <button><router-link to="/skills">Traits et compétences</router-link></button>
+      <button><router-link to="/stuff">Inventaire</router-link></button>
+      <button><router-link to="/spellbook">Grimoire</router-link></button>
+    </div>
+    <br>
     <button v-on:click="printCharacter(character)">character</button>
   </div>
 </template>
 
 <script>
-import CharacterDetails from "./CharacterDetails.vue";
-import FeaturesList from "./FeaturesList.vue";
-import SkillsList from "./SkillsList.vue";
-import FightModifiers from "./FightModifiers.vue";
-import ArmorClassSection from "./ArmorClassSection.vue";
-import StatusSection from "./StatusSection.vue";
-import ArmorsAndWeapons from "./ArmorsAndWeapons.vue";
-import SpellsList from "./SpellsList.vue";
-import LifePointsTracking from "./LifePointsTracking.vue";
-import TraitsAndAbilitiesList from "./TraitsAndAbilitiesList.vue";
-import MagicStuffsList from "./MagicStuffsList";
+import Character from "./Character.vue";
+import Stuff from "./Stuff.vue";
+import SpellBook from "./SpellsList.vue";
+import SkillsAndAbilities from "./SkillsAndAbilities.vue";
 
 export default {
   name: "app",
-  components: {
-    "char-details": CharacterDetails,
-    "features-list": FeaturesList,
-    "skills-list": SkillsList,
-    "fight-modifiers": FightModifiers,
-    "armor-class": ArmorClassSection,
-    "status-section": StatusSection,
-    "armors-and-weapons": ArmorsAndWeapons,
-    "spells-list": SpellsList,
-    "life-points": LifePointsTracking,
-    "abilities-list": TraitsAndAbilitiesList,
-    "magic-stuffs": MagicStuffsList
-  },
   methods: {
-    printCharacter: function(infos) {
+    printCharacter: function (infos) {
       console.log(infos);
-    }
+    },
   },
   data() {
     return {
@@ -67,7 +32,7 @@ export default {
           name: "",
           level: 1,
           breed: "",
-          class: ""
+          class: "",
         },
         stats: {
           for: {
@@ -77,7 +42,7 @@ export default {
             save: 0,
             modifier: 0,
             breedBonus: 0,
-            totalValue: 0
+            totalValue: 0,
           },
           dex: {
             name: "Dextérité",
@@ -86,7 +51,7 @@ export default {
             save: 0,
             modifier: 0,
             breedBonus: 0,
-            totalValue: 0
+            totalValue: 0,
           },
           con: {
             name: "Constitution",
@@ -95,7 +60,7 @@ export default {
             save: 0,
             modifier: 0,
             breedBonus: 0,
-            totalValue: 0
+            totalValue: 0,
           },
           int: {
             name: "Intelligence",
@@ -104,7 +69,7 @@ export default {
             save: 0,
             modifier: 0,
             breedBonus: 0,
-            totalValue: 0
+            totalValue: 0,
           },
           sag: {
             name: "Sagesse",
@@ -113,7 +78,7 @@ export default {
             save: 0,
             modifier: 0,
             breedBonus: 0,
-            totalValue: 0
+            totalValue: 0,
           },
           cha: {
             name: "Charisme",
@@ -122,12 +87,12 @@ export default {
             save: 0,
             modifier: 0,
             breedBonus: 0,
-            totalValue: 0
-          }
+            totalValue: 0,
+          },
         },
         ddjs: {
           value: null,
-          affectedStat: ""
+          affectedStat: "",
         },
         skills: {
           acrobaties: 0,
@@ -147,13 +112,13 @@ export default {
           religion: 0,
           representation: 0,
           supercherie: 0,
-          survie: 0
+          survie: 0,
         },
         fightModifiers: {
           masteryBonus: 2,
           perception: 0,
           initiative: 0,
-          vitesse: 0
+          vitesse: 0,
         },
         armorClass: {
           armorBonus: 0,
@@ -163,7 +128,7 @@ export default {
           resistances: [],
           vulnerabilites: [],
           desavantageArmure: "",
-          finalValue: 0
+          finalValue: 0,
         },
         weapons: [],
         armors: [],
@@ -171,17 +136,17 @@ export default {
         pvTracking: {
           pvDice: {
             value: null,
-            nbDice: null
+            nbDice: null,
           },
           currentValue: 0,
           provisionalPV: 0,
-          maxValue: 0
+          maxValue: 0,
         },
         traitsAndAbilities: [],
-        magicStuffs: []
-      }
+        magicStuffs: [],
+      },
     };
-  }
+  },
 };
 </script>
 
