@@ -7,7 +7,7 @@
       <button><router-link to="/stuff">Inventaire</router-link></button>
       <button><router-link to="/spellbook">Grimoire</router-link></button>
     </div>
-    <br>
+    <hr>
     <button v-on:click="printCharacter(character)">character</button>
   </div>
 </template>
@@ -45,7 +45,7 @@ export default {
             totalValue: 0,
           },
           dex: {
-            name: "Dextérité",
+            name: "Dexterite",
             value: 0,
             mastery: false,
             save: 0,
@@ -118,7 +118,8 @@ export default {
           masteryBonus: 2,
           perception: 0,
           initiative: 0,
-          vitesse: 0,
+          initBonus: 0,
+          speed: 9,
         },
         armorClass: {
           armorBonus: 0,
@@ -136,7 +137,7 @@ export default {
         pvTracking: {
           pvDice: {
             value: null,
-            nbDice: null,
+            nbDice: 1,
           },
           currentValue: 0,
           provisionalPV: 0,

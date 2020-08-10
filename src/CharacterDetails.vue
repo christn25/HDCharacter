@@ -83,9 +83,11 @@ export default {
           break;
         case "gnome":
           stats.int.breedBonus = 2;
+          fightModifiers.speed = 7.5;
           break;
         case "halfelin":
           stats.dex.breedBonus = 2;
+          fightModifiers.speed = 7.5;
           break;
         case "humain":
           for (var stat in stats) {
@@ -94,6 +96,7 @@ export default {
           break;
         case "nain":
           stats.con.breedBonus = 2;
+          fightModifiers.speed = 7.5;
           break;
         case "aasimar":
           stats.sag.breedBonus = 1;
@@ -106,6 +109,7 @@ export default {
         case "felys":
           stats.dex.breedBonus = 2;
           stats.sag.breedBonus = 1;
+          fightModifiers.speed = 12;
           break;
         case "homme_serpent":
           stats.sag.breedBonus = 2;
@@ -127,7 +131,7 @@ export default {
         pvTracking.pvDice.value = null;
         pvTracking.maxValue = 0;
         ddjs.value = null;
-        ddjs.affectedValue = "";
+        ddjs.affectedStat = "";
       }
       switch (details.class) {
         case "barbare":
@@ -240,6 +244,7 @@ export default {
             (Math.round((parseInt(pvTracking.pvDice.value) + 1) / 2) +
               parseInt(stats.con.modifier));
       }
+      pvTracking.currentValue = pvTracking.maxValue;
     },
     updateMasteryValue: function (details, stats, pvTracking, fightModifiers) {
       pvTracking.pvDice.nbDice = details.level;
@@ -261,6 +266,7 @@ export default {
       } else if (details.level <= 16) {
         fightModifiers.masteryBonus = 6;
       }
+      pvTracking.currentValue = pvTracking.maxValue;
     },
     initLevel: function (details) {
       details.level = null;

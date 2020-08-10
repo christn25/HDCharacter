@@ -47,9 +47,13 @@ export default {
           pvTracking.maxValue = parseInt(pvTracking.pvDice.value) + ((parseInt(details.level) - 1) * (Math.round((parseInt(pvTracking.pvDice.value) + 1) / 2) + parseInt(stats.con.modifier)));
         }
       }
+      if (feature.name == "Dexterite") {
+        fightModifiers.initiative = feature.totalValue;
+      }
       if(feature.name == ddjs.affectedStat) {
         ddjs.value = tools.updateDDJSValue(feature.modifier, fightModifiers.masteryBonus);
       }
+      pvTracking.currentValue = pvTracking.maxValue;
     },
     initValues: function(stats, feature, pvTracking) {
       feature.value = null;

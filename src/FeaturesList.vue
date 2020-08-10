@@ -26,7 +26,6 @@
       </tbody>
     </table>
     <div v-if="ddjs.value != null">Difficulté des JS : {{ddjs.value}}</div>
-    <div>Points de vie : {{pvTracking.maxValue}}</div>
   </div>
 </template>
 

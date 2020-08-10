@@ -7,6 +7,7 @@
       v-bind:pvTracking="character.pvTracking"
       v-bind:ddjs="character.ddjs"
     ></char-details>
+    <hr>
     <features-list
       v-bind:details="character.details"
       v-bind:stats="character.stats"
@@ -14,12 +15,18 @@
       v-bind:fightModifiers="character.fightModifiers"
       v-bind:pvTracking="character.pvTracking"
     ></features-list>
-    <life-points 
-      v-bind:pvTracking="character.pvTracking"
-    ></life-points>
-    <fight-modifiers></fight-modifiers>
+    <hr>
+    <life-points v-bind:pvTracking="character.pvTracking"></life-points>
+    <hr>
+    <fight-modifiers
+      v-bind:fightModifiers="character.fightModifiers"
+      v-bind:stats="character.stats"
+    ></fight-modifiers>
+    <hr>
     <armor-class></armor-class>
+    <hr>
     <status-section></status-section>
+    <hr>
   </div>
 </template>
 
