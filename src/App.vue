@@ -2,12 +2,20 @@
   <div id="app">
     <router-view v-bind:character="character"></router-view>
     <div>
-      <button><router-link to="/character">Personnage</router-link></button>
-      <button><router-link to="/skills">Traits et compétences</router-link></button>
-      <button><router-link to="/stuff">Inventaire</router-link></button>
-      <button><router-link to="/spellbook">Grimoire</router-link></button>
+      <button>
+        <router-link to="/character">Personnage</router-link>
+      </button>
+      <button>
+        <router-link to="/skills">Traits et compétences</router-link>
+      </button>
+      <button>
+        <router-link to="/stuff">Inventaire</router-link>
+      </button>
+      <button>
+        <router-link to="/spellbook">Grimoire</router-link>
+      </button>
     </div>
-    <hr>
+    <hr />
     <button v-on:click="printCharacter(character)">character</button>
   </div>
 </template>
@@ -123,16 +131,15 @@ export default {
         },
         armorClass: {
           armorBonus: 0,
-          shieldBOnus: 0,
+          shieldBonus: 0,
           dexModifier: 0,
           magicBonus: 0,
           resistances: [],
-          vulnerabilites: [],
+          vulnerabilities: [],
           desavantageArmure: "",
           finalValue: 0,
         },
         weapons: [],
-        armors: [],
         spells: [],
         pvTracking: {
           pvDice: {

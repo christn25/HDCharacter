@@ -21,6 +21,7 @@
             v-bind:pvTracking="pvTracking"
             v-bind:fightModifiers="fightModifiers"
             v-bind:ddjs="ddjs"
+            v-bind:armorClass="armorClass"
           ></feature-details>
         </template>
       </tbody>
@@ -37,7 +38,7 @@ export default {
   components: {
     "feature-details": FeatureDetails,
   },
-  props: ["details", "stats", "ddjs", "pvTracking", "fightModifiers"],
+  props: ["details", "stats", "ddjs", "pvTracking", "fightModifiers", "armorClass"],
   methods: {},
 };
 </script>

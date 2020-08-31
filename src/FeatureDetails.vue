@@ -5,7 +5,7 @@
       <input
         type="number"
         v-model="feature.value"
-        v-on:keyup="updateData(details, stats, feature, pvTracking, fightModifiers, ddjs)"
+        v-on:keyup="updateData(details, stats, feature, pvTracking, fightModifiers, ddjs, armorClass)"
         v-on:click="initValues(stats, feature, pvTracking)"
         min="0"
       />
@@ -25,9 +25,9 @@ import tools from "./lib/tools.js";
 
 export default {
   name: "feature-details",
-  props: ["details", "stats", "feature", "pvTracking", "fightModifiers", "ddjs"],
+  props: ["details", "stats", "feature", "pvTracking", "fightModifiers", "ddjs", "armorClass"],
   methods: {
-    updateData: function(details,stats, feature, pvTracking, fightModifiers, ddjs) {
+    updateData: function(details,stats, feature, pvTracking, fightModifiers, ddjs, armorClass) {
       if (feature.value != "") {
         feature.totalValue = parseInt(feature.value) + parseInt(feature.breedBonus);
         feature.modifier = Math.floor((feature.totalValue - 10) / 2);
@@ -49,6 +49,8 @@ export default {
       }
       if (feature.name == "Dexterite") {
         fightModifiers.initiative = feature.totalValue;
+        armorClass.dexModifier = feature.modifier;
+        armorClass.finalValue = tools.calculateCA(armorClass);
       }
       if(feature.name == ddjs.affectedStat) {
         ddjs.value = tools.updateDDJSValue(feature.modifier, fightModifiers.masteryBonus);

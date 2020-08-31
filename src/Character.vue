@@ -7,26 +7,27 @@
       v-bind:pvTracking="character.pvTracking"
       v-bind:ddjs="character.ddjs"
     ></char-details>
-    <hr>
+    <hr />
     <features-list
       v-bind:details="character.details"
       v-bind:stats="character.stats"
       v-bind:ddjs="character.ddjs"
       v-bind:fightModifiers="character.fightModifiers"
       v-bind:pvTracking="character.pvTracking"
+      v-bind:armorClass="character.armorClass"
     ></features-list>
-    <hr>
+    <hr />
     <life-points v-bind:pvTracking="character.pvTracking"></life-points>
-    <hr>
+    <hr />
     <fight-modifiers
       v-bind:fightModifiers="character.fightModifiers"
       v-bind:stats="character.stats"
     ></fight-modifiers>
-    <hr>
-    <armor-class></armor-class>
-    <hr>
+    <hr />
+    <armor-class v-bind:armorClass="character.armorClass" v-bind:armorList="character.armors"></armor-class>
+    <hr />
     <status-section></status-section>
-    <hr>
+    <hr />
   </div>
 </template>
 
