@@ -1,14 +1,13 @@
 <template>
-  <div>
-  </div>
+<div>
+</div>
 </template>
 
 <script>
 export default {
-  name: 'skills-list',
-  props: [''],
-  methods: {
-  }
+    name: 'skills-list',
+    props: [''],
+    methods: {}
 };
 </script>
 

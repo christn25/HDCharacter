@@ -1,14 +1,13 @@
 <template>
-  <div>
-  </div>
+<div>
+</div>
 </template>
 
 <script>
 export default {
-  name: 'status-section',
-  props: [''],
-  methods: {
-  }
+    name: 'status-section',
+    props: [''],
+    methods: {}
 };
 </script>
 

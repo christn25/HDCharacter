@@ -1,19 +1,18 @@
 <template>
-  <div>
-  </div>
+<div>
+</div>
 </template>
 
 <script>
 import WeaponDetails from './WeaponDetails.vue';
 
 export default {
-  name: 'weapons-list',
-  components: {
-    'weapon-details': WeaponDetails
-  },
-  props: [''],
-  methods: {
-  }
+    name: 'weapons-list',
+    components: {
+        'weapon-details': WeaponDetails
+    },
+    props: [''],
+    methods: {}
 };
 </script>
 

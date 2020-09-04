@@ -1,14 +1,13 @@
 <template>
-  <div>
-  </div>
+<div>
+</div>
 </template>
 
 <script>
 export default {
-  name: 'magic-stuff-details',
-  props: [''],
-  methods: {
-  }
+    name: 'magic-stuff-details',
+    props: [''],
+    methods: {}
 };
 </script>
 

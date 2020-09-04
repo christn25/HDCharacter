@@ -1,14 +1,13 @@
 <template>
-  <div>
-  </div>
+<div>
+</div>
 </template>
 
 <script>
 export default {
-  name: 'spells-details',
-  props: [''],
-  methods: {
-  }
+    name: 'spells-details',
+    props: [''],
+    methods: {}
 };
 </script>
 

@@ -1,17 +1,17 @@
 <template>
-  <div></div>
+<div></div>
 </template>
 
 <script>
 import SpellDetails from "./SpellDetails.vue";
 
 export default {
-  name: "spells-list",
-  components: {
-    "spell-details": SpellDetails,
-  },
-  props: ["character"],
-  methods: {},
+    name: "spells-list",
+    components: {
+        "spell-details": SpellDetails,
+    },
+    props: ["character"],
+    methods: {}
 };
 </script>
 

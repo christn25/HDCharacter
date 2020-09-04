@@ -1,19 +1,18 @@
 <template>
-  <div>
-  </div>
+<div>
+</div>
 </template>
 
 <script>
 import AbilityDetails from './AbilityDetails.vue';
 
 export default {
-  name: 'abilities-list',
-  components: {
-    'ability-details': AbilityDetails
-  },
-  props: [''],
-  methods: {
-  }
+    name: 'abilities-list',
+    components: {
+        'ability-details': AbilityDetails
+    },
+    props: [''],
+    methods: {}
 };
 </script>
 
