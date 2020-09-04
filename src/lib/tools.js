@@ -5,41 +5,16 @@ export default {
     calculateCA: function (armorClass, armorType) {
         var caModifier = 0;
         var dexModifier = parseInt(armorClass.dexModifier);
+        var armorBonus = parseInt(armorClass.armorBonus);
         switch (armorType) {
-            case "quilted":
-            case "leather":
-                caModifier = 11 + dexModifier;
+            case "Légère":
+                caModifier = armorBonus + dexModifier;
                 break;
-            case "studdedLeather":
-                caModifier = 12 + dexModifier;
+            case "Intermédiaire":
+                caModifier = this.checkDexModifier(armorBonus, dexModifier);
                 break;
-            case "skin":
-                caModifier = this.checkDexModifier(12, dexModifier);
-                break;
-            case "meshShirt":
-                caModifier = this.checkDexModifier(13, dexModifier);
-                break;
-            case "scales":
-            case "breastplate":
-                caModifier = this.checkDexModifier(14, dexModifier);
-                break;
-            case "half_flat":
-                caModifier = this.checkDexModifier(15, dexModifier);
-                break;
-            case "broigne":
-                caModifier = 14;
-                break;
-            case "chainmail":
-                caModifier = 16;
-                break;
-            case "clibanion":
-                caModifier = 17;
-                break;
-            case "harnois":
-                caModifier = 18;
-                break;
-            default:
-                caModifier = dexModifier;
+            case "Lourde":
+                caModifier = armorBonus;
                 break;
         }
         return caModifier;

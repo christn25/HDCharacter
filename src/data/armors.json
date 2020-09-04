@@ -1,0 +1,86 @@
+[
+    {
+        "id": 0,
+        "name": "Matelassée",
+        "type": "Légère",
+        "ca": 11,
+        "disadvantage": true
+    },
+    {
+        "id": 1,
+        "name": "Cuir",
+        "type": "Légère",
+        "ca": 11,
+        "disadvantage": false
+    },
+    {
+        "id": 2,
+        "name": "Cuir clouté",
+        "type": "Légère",
+        "ca": 12,
+        "disadvantage": false
+    },
+    {
+        "id": 3,
+        "name": "Peau",
+        "type": "Intermédiaire",
+        "ca": 12,
+        "disadvantage": false
+    },
+    {
+        "id": 4,
+        "name": "Chemise de mailles",
+        "type": "Intermédiaire",
+        "ca": 13,
+        "disadvantage": false
+    },
+    {
+        "id": 5,
+        "name": "Ecailles",
+        "type": "Intermédiaire",
+        "ca": 14,
+        "disadvantage": true
+    },
+    {
+        "id": 6,
+        "name": "Cuirasse",
+        "type": "Intermédiaire",
+        "ca": 14,
+        "disadvantage": false
+    },
+    {
+        "id": 7,
+        "name": "Demi-plate",
+        "type": "Intermédiaire",
+        "ca": 15,
+        "disadvantage": true
+    },
+    {
+        "id": 8,
+        "name": "Broigne",
+        "type": "Lourde",
+        "ca": 14,
+        "disadvantage": true
+    },
+    {
+        "id": 9,
+        "name": "Cotte de mailles",
+        "type": "Lourde",
+        "ca": 16,
+        "disadvantage": true
+    },
+    {
+        "id": 10,
+        "name": "Clibanion",
+        "type": "Lourde",
+        "ca": 17,
+        "disadvantage": true
+    },
+    {
+        "id": 11,
+        "name": "Harnois",
+        "type": "Lourde",
+        "ca": 18,
+        "disadvantage": true
+    }
+]
