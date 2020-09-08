@@ -19,14 +19,33 @@ import Tools from "./lib/Tools.js";
 
 export default {
     name: "feature-details",
-    props: ["details", "stats", "feature", "pvTracking", "fightModifiers", "ddjs", "armorClass"],
+    props: [
+        "details",
+        "stats",
+        "feature",
+        "pvTracking",
+        "fightModifiers",
+        "ddjs",
+        "armorClass",
+        "armor",
+    ],
     methods: {
-        updateData: function (details, stats, feature, pvTracking, fightModifiers, ddjs, armorClass) {
+        updateData: function (
+            details,
+            stats,
+            feature,
+            pvTracking,
+            fightModifiers,
+            ddjs,
+            armorClass
+        ) {
             if (feature.value != "") {
-                feature.totalValue = parseInt(feature.value) + parseInt(feature.breedBonus);
+                feature.totalValue =
+                    parseInt(feature.value) + parseInt(feature.breedBonus);
                 feature.modifier = Math.floor((feature.totalValue - 10) / 2);
                 if (feature.mastery) {
-                    feature.save = parseInt(fightModifiers.masteryBonus) + parseInt(feature.modifier);
+                    feature.save =
+                        parseInt(fightModifiers.masteryBonus) + parseInt(feature.modifier);
                 } else {
                     feature.save = feature.modifier;
                 }
@@ -38,16 +57,23 @@ export default {
                 if (parseInt(details.level) == 1) {
                     pvTracking.maxValue = pvTracking.pvDice.value + stats.con.modifier;
                 } else {
-                    pvTracking.maxValue = parseInt(pvTracking.pvDice.value) + ((parseInt(details.level) - 1) * (Math.round((parseInt(pvTracking.pvDice.value) + 1) / 2) + parseInt(stats.con.modifier)));
+                    pvTracking.maxValue =
+                        parseInt(pvTracking.pvDice.value) +
+                        (parseInt(details.level) - 1) *
+                        (Math.round((parseInt(pvTracking.pvDice.value) + 1) / 2) +
+                            parseInt(stats.con.modifier));
                 }
             }
             if (feature.name == "Dexterite") {
                 fightModifiers.initiative = feature.totalValue;
                 armorClass.dexModifier = feature.modifier;
-                armorClass.finalValue = Tools.calculateCA(armorClass);
+                armorClass.finalValue = Tools.calculateCA(armorClass, this.armor.type);
             }
             if (feature.name == ddjs.affectedStat) {
-                ddjs.value = Tools.updateDDJSValue(feature.modifier, fightModifiers.masteryBonus);
+                ddjs.value = Tools.updateDDJSValue(
+                    feature.modifier,
+                    fightModifiers.masteryBonus
+                );
             }
             pvTracking.currentValue = pvTracking.maxValue;
         },
@@ -55,8 +81,8 @@ export default {
             feature.value = null;
             feature.modifier = 0;
             feature.save = 0;
-        }
-    }
+        },
+    },
 };
 </script>
 

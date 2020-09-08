@@ -5,6 +5,7 @@ export default {
     calculateCA: function (armorClass, armorType) {
         var caModifier = 0;
         var dexModifier = parseInt(armorClass.dexModifier);
+        var shieldBonus = parseInt(armorClass.shieldBonus);
         var armorBonus = parseInt(armorClass.armorBonus);
         switch (armorType) {
             case "Légère":
@@ -16,7 +17,11 @@ export default {
             case "Lourde":
                 caModifier = armorBonus;
                 break;
+            default:
+                caModifier = dexModifier;
+                break;
         }
+        caModifier = caModifier + shieldBonus;
         return caModifier;
     },
     checkDexModifier: function (caValue, dexModifier) {

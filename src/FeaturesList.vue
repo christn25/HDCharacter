@@ -14,7 +14,7 @@
         </thead>
         <tbody>
             <template v-for="stat in stats">
-                <feature-details v-bind:details="details" v-bind:stats="stats" v-bind:feature="stat" v-bind:pvTracking="pvTracking" v-bind:fightModifiers="fightModifiers" v-bind:ddjs="ddjs" v-bind:armorClass="armorClass"></feature-details>
+                <feature-details v-bind:details="details" v-bind:stats="stats" v-bind:feature="stat" v-bind:pvTracking="pvTracking" v-bind:fightModifiers="fightModifiers" v-bind:ddjs="ddjs" v-bind:armorClass="armorClass" v-bind:armor="armor"></feature-details>
             </template>
         </tbody>
     </table>
@@ -30,7 +30,7 @@ export default {
     components: {
         "feature-details": FeatureDetails,
     },
-    props: ["details", "stats", "ddjs", "pvTracking", "fightModifiers", "armorClass"],
+    props: ["details", "stats", "ddjs", "pvTracking", "fightModifiers", "armorClass", "armor"],
     methods: {}
 };
 </script>

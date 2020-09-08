@@ -2,7 +2,7 @@
 <div>
     <char-details v-bind:details="character.details" v-bind:stats="character.stats" v-bind:fightModifiers="character.fightModifiers" v-bind:pvTracking="character.pvTracking" v-bind:ddjs="character.ddjs"></char-details>
     <hr />
-    <features-list v-bind:details="character.details" v-bind:stats="character.stats" v-bind:ddjs="character.ddjs" v-bind:fightModifiers="character.fightModifiers" v-bind:pvTracking="character.pvTracking" v-bind:armorClass="character.armorClass"></features-list>
+    <features-list v-bind:details="character.details" v-bind:stats="character.stats" v-bind:ddjs="character.ddjs" v-bind:fightModifiers="character.fightModifiers" v-bind:pvTracking="character.pvTracking" v-bind:armorClass="character.armorClass" v-bind:armor="character.stuff.armor"></features-list>
     <hr />
     <life-points v-bind:pvTracking="character.pvTracking"></life-points>
     <hr />
