@@ -25,6 +25,8 @@
             </td>
           </tr>
         </tbody>
+      </table>
+      <div>
         <select v-model="selectedArmor" v-on:change="replaceArmor(armor)">
           <optgroup label="Armures légères">
             <option value="0">Matelassée</option>
@@ -45,7 +47,7 @@
             <option value="11">Harois</option>
           </optgroup>
         </select>
-      </table>
+      </div>
     </div>
     <div>
         <label>Bouclier</label>
@@ -107,9 +109,7 @@ export default {
     },
     manageShield: function () {
         this.armorClass.shieldBonus = 2;
-        console.log(this.armor.type);
         this.armorClass.finalValue = Tools.calculateCA(this.armorClass, this.armor.type);
-        console.log(this.armor.shield);
     }
   },
   data() {
