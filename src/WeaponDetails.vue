@@ -13,7 +13,6 @@
     <td>
       <div>
         <input type="checkbox" v-on:change="manageSilver()"/>
-        <label>En argent</label>
       </div>
     </td>
     <td>

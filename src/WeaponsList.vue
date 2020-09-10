@@ -9,6 +9,7 @@
           <th>Portée</th>
           <th>Propriétées</th>
           <th>Description</th>
+          <th>En argent</th>
           <th></th>
         </tr>
       </thead>
@@ -82,7 +83,7 @@ export default {
   props: ["weapons"],
   methods: {
     addWeapon: function () {
-        var newWeapon = this.weaponsJson[0].weapons.find(
+      var newWeapon = this.weaponsJson[0].weapons.find(
         (elt) => elt.id == this.selectedWeapon
       );
       this.weapons.push(newWeapon);
